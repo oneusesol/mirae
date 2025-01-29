@@ -32,3 +32,4 @@ with open('output.txt', 'w', encoding='utf-8') as f:
                 f.write('-' * 80 + '\n')
         else:
             f.write("페이지 요청에 실패했습니다.\n")
+            
