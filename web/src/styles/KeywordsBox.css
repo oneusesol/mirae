@@ -1,0 +1,22 @@
+.keywords-box-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.keywords-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #026773;
+  margin-bottom: 8px; /* 박스와의 간격 */
+  border-left: 4px solid #026773; /* 왼쪽 바 */
+  padding-left: 8px; /* 텍스트와 바 사이 여백 */
+  text-align: left; /* 왼쪽 정렬 */
+}
+
+.keywords-box {
+  background-color: #fdf7f1;
+  height: 150px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
