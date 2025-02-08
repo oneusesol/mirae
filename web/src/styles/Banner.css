@@ -32,7 +32,7 @@
 
 .banner-title {
     font-size: 60px;
-    color: #026773;
+    color: #3CA6A6;
     font-weight: bold;
     margin: 0;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05); /* 아주 가벼운 그림자 */
@@ -42,7 +42,7 @@
     font-size: 22px;
     color: #444;
     margin-top: 8px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* 부드러운 페이드 인 애니메이션 */

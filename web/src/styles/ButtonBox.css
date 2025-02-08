@@ -35,7 +35,7 @@
 .button-text {
   font-size: 18px;
   font-weight: bold;
-  color: #026773; /* 버튼 내 텍스트 색상을 강조 */
+  color: #555; /* 버튼 내 텍스트 색상을 강조 */
 }
 
 /* 버튼 간 간격을 조정하기 위한 부모 컨테이너 */
