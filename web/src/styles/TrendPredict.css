@@ -8,6 +8,10 @@
     margin: 0 auto;
   }
   
+.trend-predict-container h2 {
+  font-size: 28px;
+}
+
   /* 공통 컨테이너 스타일 */
   .container-box {
     display: flex;
