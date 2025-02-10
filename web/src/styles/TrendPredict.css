@@ -17,7 +17,7 @@
     max-width: 1400px;
   }
   
-/* ✅ 카테고리 버튼 스타일 */
+/* 카테고리 버튼 스타일 */
 .category-box {
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@
     cursor: pointer;
   }
   
-  /* ✅ 카테고리 버튼 호버 효과 */
+  /* 카테고리 버튼 호버 효과 */
   .category-box:hover {
     background-color: #f0f8ff;
     border-color: #026773;
