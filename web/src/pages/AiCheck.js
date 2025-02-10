@@ -11,7 +11,7 @@ function AiCheck() {
 
       {/* 입력 및 결과 컨테이너 */}
       <div className="ai-check-content">
-        {/* 피싱 문자 입력. */}
+        {/* 피싱 문자 입력 */}
         <div className="input-section">
           <h2 className="section-title">피싱 문자 입력</h2>
           <textarea className="input-box" placeholder="피싱 문자를 입력해주세요."></textarea>
