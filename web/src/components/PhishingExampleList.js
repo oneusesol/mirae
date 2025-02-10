@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/TrendPredict.css"; // ✅ 스타일 유지
+import "../styles/TrendPredict.css"; //스타일 유지
 
 const PhishingExampleList = ({ examples }) => {
   return (
@@ -11,7 +11,7 @@ const PhishingExampleList = ({ examples }) => {
           </div>
         ))
       ) : (
-        <p>로딩 중...</p> // ✅ 백엔드에서 데이터가 들어오기 전 상태
+        <p>로딩 중...</p> //백엔드에서 데이터가 들어오기 전 상태
       )}
     </div>
   );
