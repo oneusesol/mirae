@@ -11,8 +11,6 @@
 .year-title {
     margin: 10px 0;
     text-align: left;
-    font-size: 24px;
-    /* 글씨 크기를 24px로 설정 */
 }
 
 .quarter-container {
@@ -33,4 +31,9 @@
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+h2 {
+    font-size: 32px;
+    /* 글씨 크기를 32px로 설정 */
 }
