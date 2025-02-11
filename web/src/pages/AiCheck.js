@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/AiCheck.css";
+import InputBox from "../components/InputBox"; // 🔥 새로 만든 InputBox 컴포넌트 가져오기
 
 function AiCheck() {
+  const [inputText, setInputText] = useState("");
+
   return (
     <div className="ai-check-container">
       {/* 타이틀 */}
@@ -11,10 +14,10 @@ function AiCheck() {
 
       {/* 입력 및 결과 컨테이너 */}
       <div className="ai-check-content">
-        {/* 피싱 문자 입력. */}
+        {/* 피싱 문자 입력 */}
         <div className="input-section">
           <h2 className="section-title">피싱 문자 입력</h2>
-          <textarea className="input-box" placeholder="피싱 문자를 입력해주세요."></textarea>
+          <InputBox onTextChange={setInputText} /> {/* 🔥 분리된 컴포넌트 사용 */}
           <button className="check-btn">검사하기</button>
         </div>
 

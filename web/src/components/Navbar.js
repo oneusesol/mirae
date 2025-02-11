@@ -7,12 +7,11 @@ function Navbar() {
     <nav className="navbar">
       <div className="logo">
         <img src="/favicon.svg" alt="Phish Rader Logo" className="logo-img" />
-        <span className="logo-text">Phish Rader</span>
+        <span className="logo-text"><Link to="/">Phish Rader</Link></span>
       </div>
       <div className="nav-links">
         <Link to="/">소개</Link>
-        <Link to="/ai-check">제보</Link>
-        <Link to="/trend-predict">기능1</Link>
+        <Link to="/">제보</Link>
       </div>
     </nav>
   );
