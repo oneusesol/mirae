@@ -1,0 +1,36 @@
+.container {
+    text-align: center;
+}
+
+.year-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.year-title {
+    margin: 10px 0;
+    text-align: left;
+    font-size: 24px;
+    /* 글씨 크기를 24px로 설정 */
+}
+
+.quarter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.quarter-wrapper {
+    margin: 5px;
+}
+
+.quarter {
+    width: 500px;
+    /* 너비를 100px로 설정 */
+    height: 100px;
+    /* 높이를 100px로 설정 */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
