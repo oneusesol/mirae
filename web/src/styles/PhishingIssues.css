@@ -1,0 +1,63 @@
+.issues-container {
+  width: 100%;
+  max-width: 1080px; /* 위쪽 컨텐츠와 동일한 너비 */
+  margin: 40px auto;
+  padding: 20px 0;
+}
+
+.issues-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #026773;
+  margin-bottom: 20px;
+  border-left: 4px solid #026773;
+  padding-left: 12px;
+  text-align: left;
+  margin-left: 5px; /* 위 컨텐츠와 정렬 */
+}
+
+.issues-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 기사 2개씩 가로 정렬 */
+  gap: 20px 40px; /* 위쪽 컨텐츠와 동일한 간격 */
+  max-width: 1080px; /* 위쪽 컨텐츠와 동일한 너비 */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+.issue-item {
+  display: flex;
+  gap: 15px; /* 이미지와 텍스트 간격 */
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+  width: 100%;
+  height: 90px; /* 위 컨텐츠와 동일한 높이 */
+}
+
+.issue-thumbnail {
+  width: 100px; /* 이미지 크기 */
+  height: 70px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.issue-content {
+  flex: 1;
+  text-align: left;
+}
+
+.issue-headline {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  text-align: left;
+}
+
+.issue-summary {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+  text-align: left;
+}

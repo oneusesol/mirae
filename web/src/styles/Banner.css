@@ -1,0 +1,58 @@
+.banner {
+    width: 100%;
+    min-height: 270px; /* 높이 살짝 증가 */
+    background-color: #f8fcfd; /* 밝고 부드러운 파스텔 톤 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px 0;
+    box-sizing: border-box;
+    border: 2px solid #cce7e8; /* 은은한 테두리 추가 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
+}
+
+.banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.banner-logo {
+    width: 55px; /* 적당한 크기 */
+    height: auto;
+}
+
+.banner-title {
+    font-size: 60px;
+    color: #3CA6A6;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05); /* 아주 가벼운 그림자 */
+}
+
+.banner-subtitle {
+    font-size: 22px;
+    color: #444;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+/* 부드러운 페이드 인 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

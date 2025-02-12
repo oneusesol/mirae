@@ -1,0 +1,46 @@
+.button-box {
+  display: flex;
+  flex-direction: column; /* 세로 정렬: 이미지 위, 텍스트 아래 */
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 2px solid #ddd;
+  padding: 15px;
+  border-radius: 12px; /* 모서리 둥글게 */
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  width: 160px; /* 버튼 크기 살짝 키우기 */
+  height: 130px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  cursor: pointer;
+}
+
+/* 마우스를 올렸을 때 효과 */
+.button-box:hover {
+  background-color: #f0f8ff; /* 연한 하늘색 느낌 */
+  border-color: #026773;
+  transform: translateY(-3px); /* 버튼이 살짝 위로 떠오르는 효과 */
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.15); /* 그림자 강조 */
+}
+
+.button-icon {
+  width: 85px; /* 아이콘 크기 살짝 키우기 */
+  height: 85px;
+  margin-bottom: 12px; /* 이미지와 텍스트 간격 */
+}
+
+.button-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555; /* 버튼 내 텍스트 색상을 강조 */
+}
+
+/* 버튼 간 간격을 조정하기 위한 부모 컨테이너 */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px; /* 버튼 간 간격을 기존보다 살짝 증가 */
+}

@@ -1,0 +1,133 @@
+.trend-predict-container {
+    text-align: center;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+.trend-predict-container h2 {
+  font-size: 28px;
+}
+
+  /* 공통 컨테이너 스타일 */
+  .container-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1400px;
+  }
+  
+/* 카테고리 버튼 스타일 */
+.category-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    width: 170px;
+    height: 140px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  /* 카테고리 버튼 호버 효과 */
+  .category-box:hover {
+    background-color: #f0f8ff;
+    border-color: #026773;
+    transform: translateY(-3px);
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* 카테고리 정렬 */
+  .category-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .category-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #026773;
+    margin-bottom: 8px;
+    border-left: 4px solid #026773;
+    padding-left: 8px;
+    text-align: left;
+  }
+  
+  /* 카테고리 리스트 */
+  .category-list {
+    display: flex;
+    flex-wrap: nowrap; /* 한 줄 정렬 유지 */
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* 피싱 경고 메시지 정렬 */
+  .phishing-warning-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .phishing-warning-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #026773;
+    margin-bottom: 8px;
+    border-left: 4px solid #026773;
+    padding-left: 8px;
+    text-align: left;
+  }
+  
+  /* 피싱 예제 리스트 정렬 */
+.phishing-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 가운데 정렬 */
+    width: 100%; /* */
+    gap: 20px; /* 박스 사이 간격 추가 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* 피싱 예제 박스 스타일 */
+  .phishing-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff3e0;
+    border: 2px solid #f0c14b;
+    padding: 25px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+    transition: all 0.3s ease-in-out;
+    width: 300px; /* 너비를 줄여 한 줄에 3개 배치 가능하게 조정 */
+    min-height: 150px;
+    text-align: center;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  

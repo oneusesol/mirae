@@ -41,7 +41,7 @@ def login(driver, user_id, user_pw):
         
         # '로그인하기' 버튼 클릭
         login_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//button[@data-testid='LoginForm_Login_Button']"))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/div/button'))
         )
         login_button.click()
         #print("로그인 성공!")
@@ -63,6 +63,7 @@ def crawl_trends(driver):
         
         trends_data = []
         trend_elements = driver.find_element(By.XPATH, "//div[@aria-label='Timeline: Explore']")
+        #time.sleep(1)
         rank_elements = trend_elements.find_elements(By.XPATH, ".//*[@data-testid='trend']")
         
         for rank_element in rank_elements:
@@ -87,7 +88,7 @@ if __name__ == "__main__":
     driver.get("https://x.com/explore")
     time.sleep(3)
     
-    # 로그인 정보 설정 ------- ! ID, PW 입력 필요 !
+    # 로그인 정보 설정
     user_id = "ID입력"
     user_pw = "PW입력"
     

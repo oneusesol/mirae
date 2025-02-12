@@ -1,0 +1,46 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 15px 30px;
+  border-bottom: 2px solid #ddd;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 40px;  /* 로고 크기 조정 */
+  height: 40px;
+  margin-right: 10px; /* 텍스트와 간격 */
+}
+
+/* 🔥 Phish Radar 링크 스타일 수정 */
+.logo-text a {
+  font-size: 22px;
+  font-weight: bold;
+  color: #3CA6A6;
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+.logo-text a:hover {
+  color: #2B7A78; /* 마우스 호버 시 색상 변경 */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #666;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
