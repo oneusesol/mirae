@@ -110,6 +110,9 @@ def crawl_trends(driver):
                 if not search_term:
                     print(f"빈 검색어 감지 (순위 {rank}), 저장하지 않음")
                     continue  # 저장하지 않고 건너뛰기
+
+                # 키워드 앞 "#" 제거 및 공백 제거
+                search_term = search_term.lstrip('#').strip()
                 
                 trends_data.append((search_term, rank))
             
