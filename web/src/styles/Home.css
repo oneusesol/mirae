@@ -16,8 +16,8 @@
 .content-container {
   display: flex;
   justify-content: space-between;
-  width: 80%;
-  max-width: 900px;
+  width: 100%;
+  max-width: 1080px;
   margin-top: 20px;
 }
 

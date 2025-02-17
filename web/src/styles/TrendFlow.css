@@ -1,39 +1,123 @@
-.container {
-    text-align: center;
+/* TrendFlow 전체를 가로 중앙 정렬 */
+.TrendFlow {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 내부 요소 중앙 정렬 */
+    width: 100%;
 }
 
+/* 컨테이너를 중앙에 정렬하고 최대 1080px로 제한 */
+.container {
+    text-align: center;
+    padding: 20px;
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto; /* 가로 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 내부 요소 중앙 정렬 */
+}
+
+
+
+/* 연도별 섹션 중앙 정렬 */
 .year-section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
 }
 
+.year-block {
+    max-width: 1080px;
+    width: 100%;
+}
+
+
+/* 연도 제목 (왼쪽 정렬된 디자인) */
 .year-title {
-    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #026773;
+    margin-bottom: 8px;
+    border-left: 4px solid #026773;
+    padding-left: 8px;
     text-align: left;
+    width: 100%;
 }
 
+/* 분기별 박스 컨테이너 */
 .quarter-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 한 줄에 4개 */
+    gap: 15px;
+    max-width: 1080px;
+    width: 100%;
 }
 
+/* 개별 분기 박스 */
 .quarter-wrapper {
-    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
 }
 
+/* 분기 라벨 스타일 */
+.quarter-label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* 개별 분기 박스 스타일 */
 .quarter {
-    width: 500px;
-    /* 너비를 100px로 설정 */
-    height: 100px;
-    /* 높이를 100px로 설정 */
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    height: 130px;
+    text-align: center;
+    color: #333;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
+/* 마우스를 올렸을 때 효과 */
+.quarter:hover {
+    background-color: #f0f8ff;
+    border-color: #026773;
+    transform: translateY(-3px);
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 제목 스타일 */
 h2 {
     font-size: 32px;
-    /* 글씨 크기를 32px로 설정 */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 반응형: 화면이 작을 때 박스 개수 조정 */
+@media (max-width: 1024px) {
+    .quarter-container {
+        grid-template-columns: repeat(2, 1fr); /* 태블릿에서는 2개씩 */
+    }
+}
+
+@media (max-width: 600px) {
+    .quarter-container {
+        grid-template-columns: repeat(1, 1fr); /* 모바일에서는 1개씩 */
+    }
 }
