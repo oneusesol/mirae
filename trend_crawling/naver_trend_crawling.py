@@ -55,7 +55,7 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 
-# ChromeDriver 실행 (chromedriver 설치 경로에 따른 경로 수정 필요)
+# ChromeDriver 실행 (경로 수정 필요)
 service = Service("/usr/local/bin/chromedriver")  
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
