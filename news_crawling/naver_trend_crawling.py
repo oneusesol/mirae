@@ -10,7 +10,7 @@ DB_CONFIG = {
     "host": "localhost",  
     "user": "root",  
     "password": "admin",  
-    "database": "crawling_db"
+    "database": "crawling_trends_db"
 }
 
 # MySQL 데이터베이스 연결 (테이블 생성만 수행, 삭제는 하지 않음)
