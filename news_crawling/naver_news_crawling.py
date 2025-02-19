@@ -17,7 +17,7 @@ DB_CONFIG_KEYWORDS = {
     "host": "localhost",
     "user": "root",
     "password": "admin",
-    "database": "crawling_db"
+    "database": "crawling_trends_db"
 }
 
 # MySQL 데이터베이스 및 테이블 생성
