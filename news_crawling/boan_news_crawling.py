@@ -11,7 +11,7 @@ DB_TREND_CONFIG = {
     "host": "localhost",
     "user": "root",
     "password": "admin",
-    "database": "crawling_db"
+    "database": "crawling_trends_db"
 }
 
 DB_NEWS_CONFIG = {
