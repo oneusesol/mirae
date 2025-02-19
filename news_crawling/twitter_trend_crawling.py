@@ -11,7 +11,7 @@ DB_CONFIG = {
     "host": "localhost",  
     "user": "root",  
     "password": "admin",  
-    "database": "crawling_db"
+    "database": "crawling_trends_db"
 }
 
 # MySQL 테이블 생성
