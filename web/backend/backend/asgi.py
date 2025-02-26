@@ -8,9 +8,7 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/asgi/
 """
 
 import os
-
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
-
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.backend.settings")  # 변경된 경로 반영
 application = get_asgi_application()

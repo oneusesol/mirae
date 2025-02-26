@@ -1,11 +1,21 @@
 import React from "react";
-import "../styles/KeywordsBox.css";
 
-function KeywordsBox() {
+function KeywordsBox({ trends }) {
   return (
-    <div className="keywords-box-container">
-      <h2 className="keywords-title">실시간 주목 받고 있는 키워드</h2>
-      <div className="keywords-box"></div>
+    <div className="keywords-box">
+      <h3>실시간 주목 받고 있는 키워드</h3>
+      <div>
+        <h4>네이버</h4>
+        <ul>{trends.naver.map((word, index) => <li key={index}>{word}</li>)}</ul>
+      </div>
+      <div>
+        <h4>구글</h4>
+        <ul>{trends.google.map((word, index) => <li key={index}>{word}</li>)}</ul>
+      </div>
+      <div>
+        <h4>트위터</h4>
+        <ul>{trends.twitter.map((word, index) => <li key={index}>{word}</li>)}</ul>
+      </div>
     </div>
   );
 }

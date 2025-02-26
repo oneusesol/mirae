@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import ButtonBox from "../components/ButtonBox";
 import TrendBox from "../components/TrendBox";
-import KeywordsBox from "../components/KeywordsBox";
-import PhishingIssues from "../components/PhishingIssues"; // 추가
+import KeywordsBox from "../components/KeywordsBox";  // 트렌드 데이터 받는 컴포넌트 추가
+import PhishingIssues from "../components/PhishingIssues"; 
 import "../styles/Home.css";
 
 function Home() {
-  const [apiData, setApiData] = useState(null);  // API 데이터를 저장할 상태
+  const [trends, setTrends] = useState({ naver: [], google: [], twitter: [] });
 
   useEffect(() => {
-    fetch("http://13.124.216.106:8000/api/test/")  // Django 백엔드 API 호출
+    fetch("http://13.124.216.106:8000/api/trends-live/")  // Django 백엔드에서 실시간 트렌드 가져오기
       .then(response => response.json())
       .then(data => {
-        console.log("백엔드 응답:", data);  // 콘솔에 응답 출력
-        setApiData(data);
+        console.log("실시간 키워드 데이터:", data);  // 콘솔 로그 확인
+        setTrends(data);
       })
       .catch(error => console.error("API 오류:", error));
   }, []);
@@ -29,11 +29,11 @@ function Home() {
       </div>
       <div className="content-container">
         <div className="trend-section">
-          {/* ✅ API 데이터 상태를 TrendBox에 전달 */}
-          <TrendBox apiData={apiData} />
+          <TrendBox />
         </div>
         <div className="keyword-section">
-          <KeywordsBox />
+          {/* KeywordsBox에 trends 데이터 전달 */}
+          <KeywordsBox trends={trends} />
         </div>
       </div>
       <PhishingIssues />
@@ -42,4 +42,3 @@ function Home() {
 }
 
 export default Home;
-
