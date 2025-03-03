@@ -3,6 +3,7 @@ import sys
 import time
 import random
 import django
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -27,6 +28,7 @@ USER_AGENTS = [
 
 # 기존 크롬 프로세스 종료
 os.system("pkill -f chrome || true")
+time.sleep(3)  # 프로세스 종료 대기
 
 # 기존 데이터 삭제 및 ID 초기화
 def reset_table():
@@ -63,6 +65,11 @@ def save_to_db(title, content, link):
 # Selenium WebDriver 초기화
 def initialize_driver():
     """크롬 드라이버 초기화 및 자동화 탐지 방지"""
+    
+    # 기존 Chrome 프로세스 강제 종료 (완전 종료 확인)
+    os.system("pkill -f chrome || true")
+    time.sleep(3)  # 잠시 대기하여 프로세스 종료 확인
+
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
@@ -79,17 +86,17 @@ def initialize_driver():
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     chrome_options.add_experimental_option("useAutomationExtension", False)
 
-    # `user-data-dir` 문제 해결: 고유한 경로 사용
-    unique_profile_dir = f"/tmp/chrome-profile-{os.getpid()}"
-    chrome_options.add_argument(f"--user-data-dir={unique_profile_dir}")
-
     # ChromeDriver 실행
     service = Service("/usr/local/bin/chromedriver")
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-
-    # DevTools 실행을 통한 자동화 탐지 방지
-    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-
+    
+    try:
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+        # DevTools 실행을 통한 자동화 탐지 방지
+        driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    except Exception as e:
+        print(f"ChromeDriver 실행 오류: {e}")
+        sys.exit(1)  # 프로그램 강제 종료
+    
     return driver
 
 # 보안뉴스 검색 후 뉴스 본문 크롤링
@@ -97,60 +104,60 @@ def search_boannews_and_scrape_results(search_query):
     driver = initialize_driver()
     search_url = "https://www.boannews.com/search/list.asp"
 
-    # 보안뉴스 검색 페이지 이동
     driver.get(search_url)
     time.sleep(random.uniform(3, 7))  # 랜덤 대기 시간 추가
 
     try:
-        # 검색창 요소 찾기
         search_input = driver.find_element(By.NAME, "find")
         search_input.clear()
-        search_input.send_keys(search_query)  # 검색어 입력
-        search_input.send_keys(Keys.RETURN)  # 엔터키 입력으로 검색 실행
+        search_input.send_keys(search_query)
+        search_input.send_keys(Keys.RETURN)
         time.sleep(random.uniform(3, 7))
 
-        # '전체뉴스 검색결과 더보기' 버튼 클릭
-        try:
-            more_results_button = driver.find_element(By.XPATH, "//span[contains(text(),'전체뉴스 검색결과 더보기')]")
-            more_results_button.click()
-            time.sleep(random.uniform(3, 7))
-        except:
-            print("No '전체뉴스 검색결과 더보기' button found.")
+        # 검색 결과 크롤링
+        news_elements = driver.find_elements(By.CSS_SELECTOR, "div.news_list")
+        today_date = datetime.today().strftime("%Y년 %m월 %d일")
+        news_links = set()
+        
+        for news in news_elements:
+            try:
+                link_element = news.find_element(By.TAG_NAME, "a")
+                link = link_element.get_attribute("href")
+                date_element = news.find_element(By.CLASS_NAME, "news_writer")
+                date_text = " ".join(date_element.text.split("|")[-1].strip().split(" ")[:3])
 
-        # 검색 결과에서 뉴스 기사 링크들 가져오기
-        news_elements = driver.find_elements(By.CSS_SELECTOR, "div.news_list a")
-        news_links = set(news.get_attribute("href") for news in news_elements if news.get_attribute("href"))
+                if today_date == date_text:
+                    news_links.add(link)
+            except:
+                print("기사 링크 없음 또는 날짜 정보 없음")
+
+        if not news_links:
+            print(f"'{search_query}' 검색어에 대한 수집된 뉴스가 없습니다.")
+            return
 
         for index, news_link in enumerate(news_links):
             try:
                 print(f"\n[{index+1}] Opening News Link: {news_link}")
 
-                # 새 창에서 기사 열기
                 driver.execute_script(f"window.open('{news_link}', '_blank');")
                 time.sleep(random.uniform(3, 7))
 
-                # 새 창으로 전환
                 driver.switch_to.window(driver.window_handles[-1])
                 time.sleep(random.uniform(3, 7))
 
-                # 기사 본문 크롤링
                 try:
                     title = driver.find_element(By.TAG_NAME, "h1").text
                     article_body = driver.find_element(By.XPATH, "//*[@id='news_content']").text
 
                     print("Article Title:", title)
-                    print("Article Content:", article_body[:500])  # 긴 본문은 앞부분 500자만 출력
+                    print("Article Content:", article_body[:500])
 
-                    # 데이터베이스에 저장
                     save_to_db(title, article_body, news_link)
 
                 except:
                     print("Failed to retrieve article content.")
 
-                # 현재 창 닫기
                 driver.close()
-
-                # 검색 결과 페이지로 복귀
                 driver.switch_to.window(driver.window_handles[0])
                 time.sleep(random.uniform(3, 7))
 
