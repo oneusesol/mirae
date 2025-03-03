@@ -1,5 +1,6 @@
 import os
 import django
+from datetime import datetime
 import sys
 import time
 import random
@@ -78,6 +79,26 @@ def initialize_driver():
     
     return driver
 
+
+# 날짜 확인 함수
+def get_news_date(driver, news_url):
+    """ 뉴스 페이지에서 날짜를 가져오고, 시각을 제거하여 반환 """
+    driver.get(news_url)
+    try:
+        date_element = WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="ct"]/div[1]/div[3]/div[1]/div[1]/span'))
+        )
+        full_date_text = date_element.text.strip()
+
+        # 날짜에서 시각 제거 (YYYY.MM.DD. HH:MM 형식일 경우)
+        clean_date = full_date_text.split()[0]  # 첫 번째 단어만 (날짜 부분만) 추출
+        return clean_date
+
+    except Exception as e:
+        print(f"Failed getting news date ({news_url}): {e}")
+        return None
+    
+    
 # 네이버 뉴스 크롤링 함수
 def crawl_naver_news():
     keywords = get_keywords()
@@ -89,8 +110,12 @@ def crawl_naver_news():
         "User-Agent": random.choice(USER_AGENTS),
         "Referer": "https://www.naver.com/",
     }
+    
+    driver = initialize_driver()  # Selenium WebDriver 초기화
+    today_str = datetime.today().strftime("%Y.%m.%d.")  # 오늘 날짜 (네이버 뉴스 형식)
 
-    for keyword in tqdm(keywords, desc="네이버 뉴스 크롤링 진행 중"):
+    for i, keyword in enumerate(keywords, 1):
+        print(f"[{i}/{len(keyword)}] '{keyword}' 검색 중...")
         url = f"https://search.naver.com/search.naver?where=news&query={keyword}"
 
         try:
@@ -108,6 +133,12 @@ def crawl_naver_news():
 
         for news_url in news_links:
             try:
+                news_date = get_news_date(driver, news_url)  # 뉴스 날짜 가져오기
+                
+                if news_date != today_str:
+                    print(f"* {news_date} (오늘 날짜 아님): {news_url}")
+                    continue  # 오늘 날짜가 아니면 크롤링 건너뜀
+                
                 news_response = requests.get(news_url, headers=headers, timeout=5)
                 news_response.raise_for_status()
                 news_soup = BeautifulSoup(news_response.text, "html.parser")
