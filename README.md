@@ -66,3 +66,13 @@ Phish-Radar는 새로운 AI 기반 피싱 문자 탐지 및 피싱 트렌드 인
 - AI & Data Processing: TensorFlow/PyTorch, NLP 모델, 데이터 크롤링 및 분석
 
 - Cloud: AWS
+
+- AI:
+  - Algorithms
+    - Retrieval-Augmented Generation (RAG), TextRank
+
+  - Frameworks
+    - FAISS, scikit-learn
+
+  - Libraries
+    - Sentence Transformers, KoNLPy
